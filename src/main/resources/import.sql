@@ -1,0 +1,1 @@
+INSERT INTO `prueba_personalsoft`.`usuario` (`id`, `apellido`, `estado_civil`, `fecha_nacimiento`, `hermanos`, `nombre`, `password`, `username`) VALUES (1, 'jimenez', 'S', '2022-03-03 08:55:40', 1, 'juan', '123456', 'juancho1')
