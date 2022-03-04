@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.personalsoft.admision.enums.EstadoCivil;
 
 @Entity
@@ -36,6 +37,7 @@ public class Usuario {
 	@Column(name="apellido")
 	private String apellido;
 	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	@Column(name="fecha_nacimiento")
 	private Date fechaNacimiento;
 	

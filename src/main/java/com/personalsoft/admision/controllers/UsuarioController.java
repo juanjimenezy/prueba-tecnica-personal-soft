@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,6 +82,25 @@ public class UsuarioController {
 		}
 		
 		return new ResponseEntity<Usuario>(usuarioNew, HttpStatus.OK);
+	}
+	
+	@PostMapping("/usuarios")
+	public ResponseEntity<?> update(@RequestBody Usuario usuario){
+		Map<String, Object> response = new HashMap<>();
+		Usuario usuarioUp = null;
+		
+		try {
+			usuarioUp = usuarioService.save(usuario);
+			if (usuarioUp == null) {
+				response.put("mensaje", "Error al grabar usuario");
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+			}
+		} catch (Exception e) {
+			response.put("mensaje", e.getMessage());
+			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<Usuario>(usuarioUp, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/usuarios")
