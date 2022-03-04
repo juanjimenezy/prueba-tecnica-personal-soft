@@ -92,8 +92,8 @@ public class UsuarioController {
 			response.put("mensaje", e.getMessage());
 			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
 
 }
